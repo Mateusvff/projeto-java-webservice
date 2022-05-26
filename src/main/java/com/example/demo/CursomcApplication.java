@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.Arrays;
 
+import com.example.demo.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +17,8 @@ public class CursomcApplication implements CommandLineRunner{
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
+	@Autowired
+	private ProdutoRepository produtoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -40,6 +43,8 @@ public class CursomcApplication implements CommandLineRunner{
 		
 		categoriaRepository.save(cat1);
 		categoriaRepository.save(cat2);
+
+		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
 		
 	}
 
