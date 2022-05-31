@@ -23,6 +23,7 @@ import javax.persistence.ManyToMany;
 public class Produto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -61,8 +62,6 @@ public class Produto implements Serializable{
 	@Override
 	public String toString() {
 		return "Produto [id=" + id + ", nome=" + nome + ", preco=" + preco + "]";
-	}
 
-	
-	
+	}
 }
