@@ -2,19 +2,15 @@ package com.example.demo;
 
 import java.util.Arrays;
 
-import com.example.demo.domain.Cidade;
-import com.example.demo.domain.Estado;
-import com.example.demo.repositories.CidadeRepository;
-import com.example.demo.repositories.EstadoRepository;
-import com.example.demo.repositories.ProdutoRepository;
+import com.example.demo.domain.*;
+import com.example.demo.domain.enums.TipoCliente;
+import com.example.demo.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.domain.Categoria;
-import com.example.demo.domain.Produto;
-import com.example.demo.repositories.CategoriaRepository;
+import org.springframework.data.jpa.repository.support.EntityManagerBeanDefinitionRegistrarPostProcessor;
 
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner{
@@ -27,6 +23,10 @@ public class CursomcApplication implements CommandLineRunner{
 	private CidadeRepository cidadeRepository;
 	@Autowired
 	private EstadoRepository estadoRepository;
+	@Autowired
+	private ClienteRepository clienteRepository;
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -49,6 +49,12 @@ public class CursomcApplication implements CommandLineRunner{
 		Cidade c2 = new Cidade(null, "São Paulo", est2);
 		Cidade c3 = new Cidade(null, "Campinas", est2);
 
+		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "07728376195", TipoCliente.PESSOAFISICA);
+		cli1.getTelefones().addAll(Arrays.asList("61981631750", "981631755"));
+
+		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", cli1, c1);
+		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", cli1, c2);
+
 		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
 		cat2.getProdutos().addAll(Arrays.asList(p2));
 		
@@ -59,6 +65,8 @@ public class CursomcApplication implements CommandLineRunner{
 		est1.getCidades().addAll(Arrays.asList(c1));
 		est2.getCidades().addAll(Arrays.asList(c2, c3));
 
+		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+
 		categoriaRepository.save(cat1);
 		categoriaRepository.save(cat2);
 
@@ -66,6 +74,11 @@ public class CursomcApplication implements CommandLineRunner{
 
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
+
+		clienteRepository.save(cli1);
+		enderecoRepository.saveAll(Arrays.asList(e1, e2));
+
+
 
 
 	}
