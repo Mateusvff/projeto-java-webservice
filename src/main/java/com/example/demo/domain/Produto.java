@@ -1,6 +1,5 @@
 package com.example.demo.domain;
 
-import jdk.jfr.DataAmount;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

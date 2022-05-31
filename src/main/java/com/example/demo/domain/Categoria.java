@@ -27,7 +27,7 @@ public class Categoria implements Serializable {
 	private String nome;
 	
 	@ManyToMany(mappedBy="categorias")
-	private List<Produto> produtos = new ArrayList<>();
+	private List<Produto> produtos = new ArrayList<>(); //uma categoria pode ter vários produtos (Associação muitos para muitos)
 
 	public Categoria(Integer id, String nome) {
 		super();
