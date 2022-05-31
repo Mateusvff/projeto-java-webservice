@@ -1,4 +1,4 @@
-package com.example.demo.resources.exceptions;
+package com.example.demo.controller.exceptions;
 
 import com.example.demo.services.exceptions.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
