@@ -21,7 +21,6 @@ import javax.persistence.ManyToMany;
 @Data
 @NoArgsConstructor
 public class Produto implements Serializable{
-
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -34,6 +33,8 @@ public class Produto implements Serializable{
 	@ManyToMany
 	@JoinTable(name="PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name="produto_id"), inverseJoinColumns = @JoinColumn(name="categoria_id"))
 	private List<Categoria> categorias = new ArrayList<>();
+
+	private List<Pedido> pedidos = new ArrayList<>();
 
 	public Produto(Integer id, String nome, double preco) {
 		super();

@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import com.example.demo.domain.*;
@@ -34,7 +35,9 @@ public class CursomcApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
 		Categoria cat1 = new Categoria(null, "Informática");
 		Categoria cat2 = new Categoria(null, "Escritório");
 		
@@ -54,6 +57,8 @@ public class CursomcApplication implements CommandLineRunner{
 
 		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", cli1, c1);
 		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", cli1, c2);
+
+		Pedido ped = new Pedido(null, sdf.parse("30/09/2017 10:32"), cli1, e1);
 
 		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
 		cat2.getProdutos().addAll(Arrays.asList(p2));

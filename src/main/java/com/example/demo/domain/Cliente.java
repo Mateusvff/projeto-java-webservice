@@ -16,7 +16,6 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 public class Cliente implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -34,6 +33,9 @@ public class Cliente implements Serializable {
     @ElementCollection
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones  = new HashSet<>();
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
 
     public Cliente(Integer id, String nome, String email, String cpfCnpj, TipoCliente tipo) {
         this.id = id;
