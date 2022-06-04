@@ -31,13 +31,11 @@ public class Pedido implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
     private Pagamento pagamento;
 
-    public Pedido(Integer id, Date instante, Cliente cliente) {
+    public Pedido(Integer id, Date instante, Cliente cliente, Endereco endereco) {
         this.id = id;
         this.instante = instante;
         this.cliente = cliente;
-    }
-
-    public Pedido(Object o, Date parse, Cliente cli1, Endereco e1) {
+        this.enderecoEntrega = endereco;
     }
 
     public Integer getId() {
